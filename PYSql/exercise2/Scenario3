@@ -1,0 +1,17 @@
+CREATE OR REPLACE PROCEDURE transfer_funds (
+   p_from_account_id IN NUMBER,
+   p_to_account_id   IN NUMBER,
+   p_amount          IN NUMBER
+) AS
+BEGIN
+   UPDATE accounts
+   SET balance = balance - p_amount
+   WHERE account_id = p_from_account_id;
+
+   UPDATE accounts
+   SET balance = balance + p_amount
+   WHERE account_id = p_to_account_id;
+
+   COMMIT;
+END;
+/
