@@ -1,0 +1,11 @@
+CREATE OR REPLACE PROCEDURE process_monthly_interest (
+   p_monthly_rate IN NUMBER DEFAULT 0.01
+) AS
+BEGIN
+   UPDATE accounts
+   SET balance = balance + (balance * p_monthly_rate)
+   WHERE account_type = 'SAVINGS';
+
+   COMMIT;
+END;
+/

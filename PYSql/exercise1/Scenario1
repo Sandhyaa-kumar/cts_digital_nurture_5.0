@@ -1,0 +1,22 @@
+DECLARE
+   CURSOR cust_cur IS
+      SELECT customer_id, age, interest_rate
+      FROM customers;
+   v_id customers.customer_id%TYPE;
+   v_age customers.age%TYPE;
+   v_rate customers.interest_rate%TYPE;
+BEGIN
+   OPEN cust_cur;
+   LOOP
+      FETCH cust_cur INTO v_id, v_age, v_rate;
+      EXIT WHEN cust_cur%NOTFOUND;
+      IF v_age > 60 THEN
+         v_rate := v_rate - (v_rate * 0.01);
+         UPDATE customers
+         SET interest_rate = v_rate
+         WHERE customer_id = v_id;
+      END IF;
+   END LOOP;
+   CLOSE cust_cur;
+   COMMIT;
+END;

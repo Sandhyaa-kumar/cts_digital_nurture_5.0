@@ -1,0 +1,12 @@
+CREATE OR REPLACE PROCEDURE apply_employee_bonus (
+   p_bonus_percent IN NUMBER DEFAULT 0.10
+) AS
+BEGIN
+   UPDATE employees
+   SET bonus_amount = salary * p_bonus_percent,
+       salary = salary + (salary * p_bonus_percent)
+   WHERE performance_rating >= 70;
+
+   COMMIT;
+END;
+/
