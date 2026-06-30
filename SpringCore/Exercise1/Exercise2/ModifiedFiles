@@ -1,0 +1,53 @@
+# Modified files of Exercise1
+
+# applicationContext.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="bookRepository"
+          class="com.library.repository.BookRepository"/>
+
+    <bean id="bookService"
+          class="com.library.service.BookService">
+
+        <constructor-arg ref="bookRepository"/>
+
+        <property name="bookRepository"
+                  ref="bookRepository"/>
+
+    </bean>
+
+</beans>
+
+
+# BookService.java
+
+package com.library.service;
+
+import com.library.repository.BookRepository;
+
+public class BookService {
+
+    private BookRepository bookRepository;
+
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+        System.out.println("Constructor Injection Successful");
+    }
+
+    public void setBookRepository(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+        System.out.println("Setter Injection Successful");
+    }
+
+    public void display() {
+        System.out.println("Book Service Bean Created");
+        bookRepository.display();
+    }
+}
