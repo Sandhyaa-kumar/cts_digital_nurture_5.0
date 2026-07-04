@@ -1,13 +1,13 @@
-package com.cognizant.springlearn;
+package com.jwt.authdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringLearnApplication {
+public class AuthdemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringLearnApplication.class, args);
+		SpringApplication.run(AuthdemoApplication.class, args);
 	}
 
 }

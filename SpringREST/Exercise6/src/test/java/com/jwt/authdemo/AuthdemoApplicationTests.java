@@ -1,10 +1,10 @@
-package com.cognizant.springlearn;
+package com.jwt.authdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringLearnApplicationTests {
+class AuthdemoApplicationTests {
 
 	@Test
 	void contextLoads() {
